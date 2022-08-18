@@ -12,6 +12,9 @@
     autowire 属性常用两个值：
     byName 根据属性名称注入 ，注入值 bean 的 id 值和类里面属性名称一样
     byType 根据属性类型注入
+
+    不论是自动装配还是手动装配，下面的注释掉的这行 <property name="dept" ref="dept"></property> 都是不用写的，如果写了这一行，就是手动装配，
+    不是自动装配
 -->
     <bean id="emp" class="per.wsk.study04.bean.Emp" autowire="byName">
        <!-- <property name="dept" ref="dept"></property>-->

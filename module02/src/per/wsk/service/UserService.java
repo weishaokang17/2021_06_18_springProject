@@ -60,6 +60,7 @@ public class UserService {
     /**
      * @Resource既可以根据类型注入，也可以根据名称注入
      * @Resource注解是jdk里面的，不是spring里面的
+     * @Resource注解，后面没有name属性时，就是根据类型注入，如果后面有name属性，就是同时根据类型和名称注入
      */
     @Resource
     private CartDao cartDao2;

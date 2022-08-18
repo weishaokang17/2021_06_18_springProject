@@ -3,6 +3,7 @@ package per.wsk.test;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import per.wsk.dao.CartDao;
 import per.wsk.service.UserService;
 
 /**
@@ -18,6 +19,19 @@ public class TestBean {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
 
         UserService bean = context.getBean("userService", UserService.class);
+
+        System.out.println(bean);
+        bean.add();
+    }
+
+    /**
+     * @Comp
+     */
+    @Test
+    public void test02(){
+        ApplicationContext context = new ClassPathXmlApplicationContext("bean1.xml");
+
+        CartDao bean = context.getBean("cartDao", CartDao.class);
 
         System.out.println(bean);
         bean.add();
