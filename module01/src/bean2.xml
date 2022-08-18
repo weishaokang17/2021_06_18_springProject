@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="beanDog" class="per.wsk.study03.bean.Dog">
+
+    </bean>
+
+    <bean id="beanCat" class="per.wsk.study03.bean.Cat" scope="prototype">
+        <!--
+        scope 属性值
+        第一个值 默认值，singleton，表示是单实例对象
+        第二个值 prototype，表示是多实例对象
+        设置 scope 值是 singleton 时候，加载 spring 配置文件时候就会创建单实例对象
+        设置 scope 值是 prototype 时候，不是在加载 spring 配置文件时候创建 对象，在调用getBean 方法时候创建多实例对象
+
+        第三个值：request  在一个请求中，会放到request域中，即同一个请求，拿到的是同一个bean对象
+        第四个值：session  在一个会话中，会放到session域中，即同一个会话，拿到的是同一个bean对象
+        -->
+    </bean>
+
+
+
+    <bean id="orders" class="per.wsk.study03.bean.Orders" init-method="initOrdersMethod" destroy-method="destroyOrdersMethod">
+        <property name="oname" value="手机"></property>
+    </bean>
+
+
+    <!--配置后置处理器
+    后置处理器，对当前spring配置文件的每一个bean都起效果
+    -->
+    <bean id="beanPost" class="per.wsk.study03.bean.MyBeanPost"></bean>
+</beans>

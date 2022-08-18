@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--方法一：内部bean-->
+    <bean id="emp" class="per.wsk.study01.bean.Emp">
+        <property name="ename" value="李四"></property>
+        <property name="gender" value="男"></property>
+        <property name="dept">
+            <bean id="beanDept" class="per.wsk.study01.bean.Dept">
+                <property name="dname" value="安保部"></property>
+            </bean>
+        </property>
+    </bean>
+
+
+    <!--方法二：级联方式-->
+    <bean id="beanEmp" class="per.wsk.study01.bean.Emp">
+        <property name="ename" value="王五"></property>
+        <property name="gender" value="男"></property>
+        <property name="dept" ref="beanDept"></property>
+    </bean>
+    <bean id="beanDept" class="per.wsk.study01.bean.Dept">
+        <property name="dname" value="财务部"></property>
+    </bean>
+
+
+    <!--方法三：级联方式的另一种写法-->
+    <bean id="beanEmp2" class="per.wsk.study01.bean.Emp">
+        <property name="ename" value="王五"></property>
+        <property name="gender" value="男"></property>
+        <property name="dept"  ref="beanDept2"></property>
+        <property name="dept.dname" value="技术部"></property>
+    </bean>
+    <bean id="beanDept2" class="per.wsk.study01.bean.Dept">
+        <property name="dname" value="财务部"></property>
+    </bean>
+
+
+
+</beans>

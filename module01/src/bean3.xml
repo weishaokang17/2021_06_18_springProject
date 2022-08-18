@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--实现自动装配
+    bean 标签属性 autowire，配置自动装配
+    autowire 属性常用两个值：
+    byName 根据属性名称注入 ，注入值 bean 的 id 值和类里面属性名称一样
+    byType 根据属性类型注入
+-->
+    <bean id="emp" class="per.wsk.study04.bean.Emp" autowire="byName">
+       <!-- <property name="dept" ref="dept"></property>-->
+    </bean>
+
+    <bean id="dept" class="per.wsk.study04.bean.Dept">
+
+    </bean>
+
+    <!--可以看到，byType时，因为该文件中有两个bean都是Dept类，所以下面注释的代码中autowire的地方会报错-->
+    <!--
+    <bean id="emp02" class="per.wsk.study04.bean.Emp" autowire="byType">
+        <property name="dept" ref="dept"></property>
+    </bean>
+
+    <bean id="dept02" class="per.wsk.study04.bean.Dept">
+
+    </bean>
+-->
+
+
+
+
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/javaweb_atguigu"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="wskzxw200817"></property>
+    </bean>-->
+
+    <!--引入外部属性文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${prop.diverClass}"></property>
+        <property name="url" value="${prop.url}"></property>
+        <property name="username" value="${prop.username}"></property>
+        <property name="password" value="${prop.password}"></property>
+    </bean>
+</beans>

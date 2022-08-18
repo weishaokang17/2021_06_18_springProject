@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="student01" class="per.wsk.study02.bean.Student">
+        <!--数组类型注入  把里面的array标签改成list标签也行-->
+        <property name="courses">
+            <array>
+                <value>芯片设计与制造</value>
+                <value>人工智能</value>
+                <value>光刻机</value>
+            </array>
+        </property>
+
+        <!--list类型注入-->
+        <property name="list">
+            <list>
+                <value>大龙</value>
+                <value>小龙</value>
+            </list>
+        </property>
+
+        <!--map类型注入-->
+        <property name="maps">
+            <map>
+                <entry key="西游记" value="吴承恩"></entry>
+                <entry key="红楼梦" value="曹雪芹"></entry>
+                <entry key="三国演义" value="罗贯中"></entry>
+            </map>
+        </property>
+
+        <!--set集合注入-->
+        <property name="sets">
+            <set>
+                <value>北京</value>
+                <value>上海</value>
+                <value>深圳</value>
+            </set>
+        </property>
+
+        <!--注入 list 集合类型，值是对象-->
+        <property name="courseList">
+            <list>
+                <ref bean="course01"></ref>
+                <ref bean="course02"></ref>
+            </list>
+        </property>
+    </bean>
+
+
+    <bean id="course01" class="per.wsk.study02.bean.Course">
+        <property name="name" value="人工智能"></property>
+    </bean>
+    <bean id="course02" class="per.wsk.study02.bean.Course">
+        <property name="name" value="微电子"></property>
+    </bean>
+
+
+    <!---->
+    <bean id="mybean" class="per.wsk.study02.bean.Mybean">
+
+    </bean>
+</beans>
