@@ -3,6 +3,7 @@ package per.wsk.study04;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,14 +13,17 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Aspect
+@Order(11)
 public class BookProxy {
 
-    @Before(value = "execution(* per.wsk.study04.Book.buy(..))")
+//    @Before(value = "execution(* per.wsk.study04.Book.buy(..))")
+    @Before("@annotation(per.wsk.study04.Avoid)")
     public void beforeMethod(){
         System.out.println("beforeMethod...");
     }
 
-    @After(value = "execution(* per.wsk.study04.Book.buy(..))")
+//    @After(value = "execution(* per.wsk.study04.Book.buy(..))")
+    @After("@annotation(per.wsk.study04.Avoid)")
     public void afterMethod(){
         System.out.println("afterMethod...");
     }

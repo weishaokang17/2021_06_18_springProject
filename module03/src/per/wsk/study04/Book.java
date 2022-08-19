@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class Book {
 
+    @Avoid
     public void buy(){
         System.out.println("buy方法被执行");
     }
