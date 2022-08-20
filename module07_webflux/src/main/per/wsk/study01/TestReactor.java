@@ -17,8 +17,8 @@ public class TestReactor {
 
     public static void main(String[] args) {
         //just 方法直接声明
-        Flux.just(1,2,3,4);
-        Mono.just(1);
+        Flux.just(1,2,3,4).subscribe(System.out::print);
+        Mono.just(1).subscribe(System.out::print);
 
         //其他的方法
         Integer[] arr = {1,4,7,9};

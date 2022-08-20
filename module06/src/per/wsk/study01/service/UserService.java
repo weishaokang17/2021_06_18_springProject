@@ -2,6 +2,9 @@ package per.wsk.study01.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import per.wsk.study01.dao.UserDao;
 
 /**
@@ -10,9 +13,14 @@ import per.wsk.study01.dao.UserDao;
  * @description
  */
 @Service
-/*@Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.REPEATABLE_READ
-,timeout = -1,readOnly = false,rollbackFor = {NullPointerException.class,ClassNotFoundException.class},
-noRollbackFor = {NoSuchMethodException.class,NumberFormatException.class})*/
+@Transactional(
+        propagation = Propagation.REQUIRED,
+        isolation = Isolation.REPEATABLE_READ,
+        timeout = -1,
+        readOnly = false,
+        rollbackFor = {NullPointerException.class,ClassNotFoundException.class},
+        noRollbackFor = {NoSuchMethodException.class,NumberFormatException.class}
+)
 //事务隔离级别 可重复读
 public class UserService {
 
